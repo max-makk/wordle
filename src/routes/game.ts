@@ -1,4 +1,4 @@
-import { words, allowed } from './words.server';
+import { words } from './words.server';
 
 export class Game {
 	index: number;
@@ -31,7 +31,7 @@ export class Game {
 	 */
 	enter(letters: string[]) {
 		const word = letters.join('');
-		const valid = allowed.has(word);
+		const valid = words.includes(word);
 
 		if (!valid) return false;
 

@@ -139,33 +139,37 @@
 			</button>
 		{:else}
 			<div class="keyboard">
-				<button data-key="enter" class:selected={submittable} disabled={!submittable}>enter</button>
-
-				<button
-					on:click|preventDefault={update}
-					data-key="backspace"
-					formaction="?/update"
-					name="key"
-					value="backspace"
-				>
-					back
-				</button>
-
-				{#each ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'] as row}
+				{#each ['йцукенгшщзхъ', 'фывапролджэ', 'EячсмитьбюD'] as row}
 					<div class="row">
 						{#each row as letter}
-							<button
-								on:click|preventDefault={update}
-								data-key={letter}
-								class={classnames[letter]}
-								disabled={data.guesses[i].length === 5}
-								formaction="?/update"
-								name="key"
-								value={letter}
-								aria-label="{letter} {description[letter] || ''}"
-							>
-								{letter}
-							</button>
+							{#if letter === 'E'}
+								<button data-key="enter" class:selected={submittable} disabled={!submittable}
+									>&#x21b5;</button
+								>
+							{:else if letter === 'D'}
+								<button
+									on:click|preventDefault={update}
+									data-key="backspace"
+									formaction="?/update"
+									name="key"
+									value="backspace"
+								>
+									&#x232B;
+								</button>
+							{:else}
+								<button
+									on:click|preventDefault={update}
+									data-key={letter}
+									class={classnames[letter]}
+									disabled={data.guesses[i].length === 5}
+									formaction="?/update"
+									name="key"
+									value={letter}
+									aria-label="{letter} {description[letter] || ''}"
+								>
+									{letter}
+								</button>
+							{/if}
 						{/each}
 					</div>
 				{/each}
@@ -226,6 +230,7 @@
 		margin: 0;
 		border: 2px solid var(--light);
 		font-weight: 700;
+		color: var(--black);
 	}
 
 	.letter.missing {
@@ -251,6 +256,7 @@
 		text-align: center;
 		justify-content: center;
 		height: min(18vh, 10rem);
+		width: 100%;
 	}
 
 	.keyboard {
@@ -300,24 +306,9 @@
 		color: var(--white);
 		outline: none;
 	}
-
 	.keyboard button[data-key='enter'],
 	.keyboard button[data-key='backspace'] {
-		position: absolute;
-		bottom: 0;
 		width: calc(1.5 * var(--size));
-		height: calc(1 / 3 * (100% - 2 * var(--gap)));
-		text-transform: uppercase;
-		font-size: calc(0.3 * var(--size));
-		padding-top: calc(0.15 * var(--size));
-	}
-
-	.keyboard button[data-key='enter'] {
-		right: calc(50% + 3.5 * var(--size) + 0.8rem);
-	}
-
-	.keyboard button[data-key='backspace'] {
-		left: calc(50% + 3.5 * var(--size) + 0.8rem);
 	}
 
 	.keyboard button[data-key='enter']:disabled {
@@ -329,7 +320,6 @@
 	}
 
 	.restart {
-		width: 100%;
 		padding: 1rem;
 		background: var(--white);
 		border-radius: 2px;
@@ -338,6 +328,7 @@
 	.restart:focus,
 	.restart:hover {
 		background: var(--black);
+		color: var(--light);
 	}
 
 	@keyframes wiggle {
