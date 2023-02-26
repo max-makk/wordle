@@ -5,6 +5,7 @@ import type { PageServerLoad, Actions } from './$types';
 export const load = (({ cookies }) => {
 	const game = new Game(cookies.get('sverdle'));
 
+	console.log(game);
 	return {
 		/**
 		 * The player's guessed words so far
