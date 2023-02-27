@@ -109,7 +109,14 @@
 					{@const exact = answer === 'x'}
 					{@const close = answer === 'c'}
 					{@const missing = answer === '_'}
-					<div class="letter" class:exact class:close class:missing class:selected>
+					<div
+						class="letter"
+						class:exact
+						class:close
+						class:missing
+						class:selected
+						style:animation-delay={column * 100 + 'ms'}
+					>
 						{value}
 						<span class="visually-hidden">
 							{#if exact}
@@ -234,18 +241,44 @@
 	}
 
 	.letter.missing {
-		background-color: var(--gray);
-		border-color: var(--gray);
+		--bg-color: var(--gray);
+		--border-color: var(--gray);
 	}
 
 	.letter.exact {
-		background-color: var(--green);
-		border-color: var(--green);
+		--bg-color: var(--green);
+		--border-color: var(--green);
 	}
 
 	.letter.close {
-		background-color: var(--yellow);
-		border-color: var(--yellow);
+		--bg-color: var(--yellow);
+		--border-color: var(--yellow);
+	}
+
+	.letter.exact,
+	.letter.close,
+	.letter.missing {
+		animation-name: Flip;
+		animation-duration: 500ms;
+		animation-timing-function: ease;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes Flip {
+		0% {
+			transform: rotateX(0deg);
+		}
+		45% {
+			transform: rotateX(90deg);
+		}
+		55% {
+			transform: rotateX(90deg);
+		}
+		100% {
+			transform: rotateX(0deg);
+			background-color: var(--bg-color);
+			border-color: var(--border-color);
+		}
 	}
 
 	.selected {
