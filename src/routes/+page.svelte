@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { fade } from 'svelte/transition';
 	import type { PageData, ActionData } from './$types';
 	import { reduced_motion } from './reduced-motion';
 	import { stats } from './stats';
@@ -145,13 +146,13 @@
 	<div class="controls">
 		{#if won || data.answers.length >= 6}
 			{#if !won && data.answer}
-				<p>the answer was "{data.answer}"</p>
+				<p in:fade>the answer was "{data.answer}"</p>
 			{/if}
-			<button data-key="enter" class="restart selected" formaction="?/restart">
+			<button in:fade data-key="enter" class="restart selected" formaction="?/restart">
 				{won ? 'you won :)' : `game over :(`} play again?
 			</button>
 		{:else}
-			<div class="keyboard">
+			<div in:fade class="keyboard">
 				{#each ['йцукенгшщзхъ', 'фывапролджэ', 'EячсмитьбюD'] as row}
 					<div class="row">
 						{#each row as letter}
@@ -243,27 +244,28 @@
 		margin: 0;
 		border: 2px solid var(--light);
 		font-weight: 700;
-		color: var(--black);
+		color: var(--color-text);
 	}
 
 	.letter.missing {
-		--bg-color: var(--gray);
-		--border-color: var(--gray);
+		--color-bg-letter: var(--gray);
+		--color-border-letter: var(--gray);
 	}
 
 	.letter.exact {
-		--bg-color: var(--green);
-		--border-color: var(--green);
+		--color-bg-letter: var(--green);
+		--color-border-letter: var(--green);
 	}
 
 	.letter.close {
-		--bg-color: var(--yellow);
-		--border-color: var(--yellow);
+		--color-bg-letter: var(--yellow);
+		--color-border-letter: var(--yellow);
 	}
 
 	.letter.exact,
 	.letter.close,
 	.letter.missing {
+		color: var(--black);
 		animation-name: Flip;
 		animation-duration: 500ms;
 		animation-timing-function: ease;
@@ -282,13 +284,13 @@
 		}
 		100% {
 			transform: rotateX(0deg);
-			background-color: var(--bg-color);
-			border-color: var(--border-color);
+			background-color: var(--color-bg-letter);
+			border-color: var(--color-border-letter);
 		}
 	}
 
 	.selected {
-		border-color: var(--black);
+		border-color: var(--coral);
 	}
 
 	.controls {
@@ -326,6 +328,7 @@
 		margin: 0;
 		text-transform: uppercase;
 		font-weight: 700;
+		cursor: pointer;
 	}
 
 	.keyboard button.exact {
@@ -341,10 +344,11 @@
 	}
 
 	.keyboard button:focus {
-		background: var(--black);
+		background: var(--coral);
 		color: var(--white);
 		outline: none;
 	}
+
 	.keyboard button[data-key='enter'],
 	.keyboard button[data-key='backspace'] {
 		width: calc(1.5 * var(--size));
@@ -355,19 +359,23 @@
 	}
 
 	.keyboard button.selected {
-		outline: 2px solid var(--black);
+		border: 2px solid var(--coral);
 	}
 
 	.restart {
 		padding: 1rem;
-		background: var(--white);
+		background: var(--color-bg);
+		color: var(--color-text);
+		outline: 2px solid var(--coral);
+		border: none;
 		border-radius: 2px;
+		cursor: pointer;
 	}
 
 	.restart:focus,
 	.restart:hover {
-		background: var(--black);
-		color: var(--light);
+		background: var(--color-text);
+		color: var(--color-bg);
 	}
 
 	@keyframes wiggle {

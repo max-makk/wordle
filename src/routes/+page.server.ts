@@ -66,5 +66,15 @@ export const actions = {
 
 	restart: async ({ cookies }) => {
 		cookies.delete('sverdle');
+	},
+
+	setTheme: async ({ url, cookies }) => {
+		const theme = url.searchParams.get('theme');
+		if (theme) {
+			cookies.set('wordle-ru-theme', theme, {
+				path: '/',
+				maxAge: 60 * 60 * 24 * 365
+			});
+		}
 	}
 } satisfies Actions;

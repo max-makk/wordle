@@ -1,9 +1,10 @@
 <script>
 	import { stats } from './stats';
 	import { showStats } from './stats';
+	import { fade } from 'svelte/transition';
 </script>
 
-<div class="stats">
+<div class="stats" transition:fade>
 	<button on:click={() => ($showStats = !$showStats)}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
 			><path
@@ -39,9 +40,9 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		background-color: var(--white);
-		box-shadow: 0 0 2px 2px var(--black);
-		color: var(--black);
+		background-color: var(--color-bg);
+		box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
+		color: var(--color-text);
 		z-index: 5;
 		display: flex;
 		flex-direction: column;
@@ -64,6 +65,11 @@
 		font-weight: 700;
 	}
 
+	path {
+		fill: var(--color-text);
+		transition: fill 0.5s ease;
+	}
+
 	button {
 		width: 2.5em;
 		height: 2.5em;
@@ -77,9 +83,13 @@
 		cursor: pointer;
 		background-color: transparent;
 		padding: 0.5em;
+		transition: background-color 0.5s ease;
 	}
 
 	button:hover {
-		background-color: var(--light);
+		background-color: var(--color-text);
+	}
+	button:hover path {
+		fill: var(--color-bg);
 	}
 </style>
