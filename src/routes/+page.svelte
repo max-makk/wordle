@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import type { PageData, ActionData } from './$types';
 	import { reduced_motion } from './reduced-motion';
+	import { stats } from './stats';
 
 	export let data: PageData;
 
@@ -47,6 +48,11 @@
 				}
 			}
 		});
+	}
+
+	$: if (won || data.answers.length >= 6) {
+		const str = JSON.stringify(data);
+		stats.finish(won, str);
 	}
 
 	/**

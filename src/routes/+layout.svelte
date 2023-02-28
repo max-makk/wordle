@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
+	import Statistics from './Statistics.svelte';
+	import { showStats } from './stats';
 	import './styles.css';
 </script>
 
@@ -9,6 +11,10 @@
 	<main>
 		<slot />
 	</main>
+
+	{#if $showStats}
+		<Statistics />
+	{/if}
 </div>
 
 <style>
