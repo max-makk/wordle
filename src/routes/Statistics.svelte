@@ -17,22 +17,22 @@
 
 	<div class="container">
 		<div class="num">{$stats.totalGames}</div>
-		<div>Played</div>
+		<div>Сыграно</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.wonGames}</div>
-		<div>Win %</div>
+		<div>Выиграно %</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.currentStreak}</div>
-		<div>Current Streak</div>
+		<div>Текущая серия</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.maxStreak}</div>
-		<div>Max Streak</div>
+		<div>Максимальная серия</div>
 	</div>
 </div>
 

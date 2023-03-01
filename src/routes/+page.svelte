@@ -146,10 +146,10 @@
 	<div class="controls">
 		{#if won || data.answers.length >= 6}
 			{#if !won && data.answer}
-				<p in:fade>the answer was "{data.answer}"</p>
+				<p in:fade>ответ был "{data.answer}"</p>
 			{/if}
 			<button in:fade data-key="enter" class="restart selected" formaction="?/restart">
-				{won ? 'you won :)' : `game over :(`} play again?
+				{won ? 'вы выиграли :)' : `игра окончена :(`} играть снова?
 			</button>
 		{:else}
 			<div in:fade class="keyboard">
