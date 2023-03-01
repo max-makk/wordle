@@ -290,7 +290,7 @@
 	}
 
 	.selected {
-		border-color: var(--coral);
+		border-color: var(--blue);
 	}
 
 	.controls {
@@ -344,7 +344,7 @@
 	}
 
 	.keyboard button:focus {
-		background: var(--coral);
+		background: var(--blue);
 		color: var(--white);
 		outline: none;
 	}
@@ -359,14 +359,14 @@
 	}
 
 	.keyboard button.selected {
-		border: 2px solid var(--coral);
+		outline: 2px solid var(--blue);
 	}
 
 	.restart {
 		padding: 1rem;
 		background: var(--color-bg);
 		color: var(--color-text);
-		outline: 2px solid var(--coral);
+		outline: 2px solid var(--blue);
 		border: none;
 		border-radius: 2px;
 		cursor: pointer;
