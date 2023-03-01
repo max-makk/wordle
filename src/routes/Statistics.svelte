@@ -1,11 +1,13 @@
 <script>
 	import { stats } from './stats';
-	import { showStats } from './stats';
 	import { fade } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 </script>
 
 <div class="stats" transition:fade>
-	<button on:click={() => ($showStats = !$showStats)}>
+	<button on:click={() => dispatch('handleClick', 'toggleStats')}>
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
 			><path
 				d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
@@ -15,22 +17,22 @@
 
 	<div class="container">
 		<div class="num">{$stats.totalGames}</div>
-		<div class="label">Played</div>
+		<div>Played</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.wonGames}</div>
-		<div class="label">Win %</div>
+		<div>Win %</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.currentStreak}</div>
-		<div class="label">Current Streak</div>
+		<div>Current Streak</div>
 	</div>
 
 	<div class="container">
 		<div class="num">{$stats.maxStreak}</div>
-		<div class="label">Max Streak</div>
+		<div>Max Streak</div>
 	</div>
 </div>
 

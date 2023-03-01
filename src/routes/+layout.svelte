@@ -1,19 +1,38 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import Statistics from './Statistics.svelte';
-	import { showStats } from './stats';
+	import HowToPlay from './HowToPlay.svelte';
 	import './styles.css';
+
+	let showStats = false;
+	let showRules = false;
+
+	function handleClick(e: CustomEvent) {
+		if (e.detail === 'toggleStats') {
+			showStats = !showStats;
+			showRules = false;
+		} else if (e.detail === 'toggleRules') {
+			showRules = !showRules;
+			showStats = false;
+		} else if (e.detail === 'hideModals') {
+			showRules = false;
+			showStats = false;
+		}
+	}
 </script>
 
 <div class="app">
-	<Header />
+	<Header on:handleClick={handleClick} />
 
 	<main>
 		<slot />
 	</main>
 
-	{#if $showStats}
-		<Statistics />
+	{#if showStats}
+		<Statistics on:handleClick={handleClick} />
+	{/if}
+	{#if showRules}
+		<HowToPlay on:handleClick={handleClick} />
 	{/if}
 </div>
 
