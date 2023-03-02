@@ -8,12 +8,16 @@
 	let showRules = false;
 
 	function handleClick(e: CustomEvent) {
-		if (e.detail === 'toggleStats') {
-			showStats = !showStats;
+		if (e.detail === 'openStats') {
+			showStats = true;
 			showRules = false;
-		} else if (e.detail === 'toggleRules') {
-			showRules = !showRules;
+		} else if (e.detail === 'openRules') {
+			showRules = true;
 			showStats = false;
+		} else if (e.detail === 'closeStats') {
+			showStats = false;
+		} else if (e.detail === 'closeRules') {
+			showRules = false;
 		}
 	}
 </script>
