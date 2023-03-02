@@ -73,6 +73,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		padding: 0 1em;
 		box-shadow: 0 2px var(--light);
 	}
@@ -111,16 +112,11 @@
 		transition: color 0.2s linear;
 		cursor: pointer;
 		padding: 0.5em;
-		border-radius: 50%;
-		transition: background-color 0.5s ease;
+		transition: box-shadow 0.3s ease;
+		box-shadow: 0px 3px transparent;
 	}
 
 	button:hover {
-		background-color: var(--color-text);
-		color: var(--color-bg);
-	}
-
-	button:hover path {
-		fill: var(--color-bg);
+		box-shadow: 0px 3px var(--color-text);
 	}
 </style>

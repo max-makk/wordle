@@ -124,7 +124,7 @@
 
 	path {
 		fill: var(--color-text);
-		transition: fill 0.5s ease;
+		transition: fill 0.3s ease;
 	}
 
 	button {
@@ -140,7 +140,7 @@
 		cursor: pointer;
 		background-color: transparent;
 		padding: 0.5em;
-		transition: background-color 0.5s ease;
+		transition: background-color 0.3s ease;
 	}
 
 	button:hover {
