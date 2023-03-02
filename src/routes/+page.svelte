@@ -2,7 +2,6 @@
 	import { enhance } from '$app/forms';
 	import { fade } from 'svelte/transition';
 	import type { PageData, ActionData } from './$types';
-	import { reduced_motion } from './reduced-motion';
 	import { stats } from './stats';
 
 	export let data: PageData;
@@ -89,7 +88,7 @@
 
 <svelte:head>
 	<title>Wordle</title>
-	<meta name="description" content="Wordle game in russian" />
+	<meta name="description" content="Игра Wordle на русском без ограничений." />
 </svelte:head>
 
 <h1 class="visually-hidden">Wordle</h1>
@@ -104,7 +103,7 @@
 		};
 	}}
 >
-	<div class="grid" class:playing={!won} class:bad-guess={form?.badGuess}>
+	<div class="grid" class:bad-guess={form?.badGuess}>
 		{#each Array(6) as _, row}
 			{@const current = row === i}
 			<h2 class="visually-hidden">Row {row + 1}</h2>
@@ -223,10 +222,8 @@
 		margin: 0 0 0.2rem 0;
 	}
 
-	@media (prefers-reduced-motion: no-preference) {
-		.grid.bad-guess .row.current {
-			animation: wiggle 0.5s;
-		}
+	.grid.bad-guess .row.current {
+		animation: wiggle 0.5s;
 	}
 
 	.letter {
@@ -374,8 +371,8 @@
 
 	.restart:focus,
 	.restart:hover {
-		background: var(--color-text);
-		color: var(--color-bg);
+		background: var(--blue);
+		color: var(--white);
 	}
 
 	@keyframes wiggle {

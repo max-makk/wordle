@@ -3,7 +3,7 @@ import { Game } from './game';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load = (({ cookies }) => {
-	const game = new Game(cookies.get('sverdle'));
+	const game = new Game(cookies.get('sv-ru-wordle'));
 
 	console.log(game);
 	return {
@@ -31,7 +31,7 @@ export const actions = {
 	 * is available, this will happen in the browser instead of here
 	 */
 	update: async ({ request, cookies }) => {
-		const game = new Game(cookies.get('sverdle'));
+		const game = new Game(cookies.get('sv-ru-wordle'));
 
 		const data = await request.formData();
 		const key = data.get('key');
@@ -44,7 +44,7 @@ export const actions = {
 			game.guesses[i] += key;
 		}
 
-		cookies.set('sverdle', game.toString());
+		cookies.set('sv-ru-wordle', game.toString());
 	},
 
 	/**
@@ -52,7 +52,7 @@ export const actions = {
 	 * the server, so that people can't cheat by peeking at the JavaScript
 	 */
 	enter: async ({ request, cookies }) => {
-		const game = new Game(cookies.get('sverdle'));
+		const game = new Game(cookies.get('sv-ru-wordle'));
 
 		const data = await request.formData();
 		const guess = data.getAll('guess') as string[];
@@ -61,17 +61,17 @@ export const actions = {
 			return fail(400, { badGuess: true });
 		}
 
-		cookies.set('sverdle', game.toString());
+		cookies.set('sv-ru-wordle', game.toString());
 	},
 
 	restart: async ({ cookies }) => {
-		cookies.delete('sverdle');
+		cookies.delete('sv-ru-wordle');
 	},
 
 	setTheme: async ({ url, cookies }) => {
 		const theme = url.searchParams.get('theme');
 		if (theme) {
-			cookies.set('wordle-ru-theme', theme, {
+			cookies.set('sv-ru-wordle-theme', theme, {
 				path: '/',
 				maxAge: 60 * 60 * 24 * 365
 			});

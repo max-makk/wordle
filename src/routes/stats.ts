@@ -15,7 +15,7 @@ interface Stats {
 function createStats() {
 	let saved: null | string = null;
 	if (browser) {
-		saved = localStorage.getItem('wordle-ru');
+		saved = localStorage.getItem('sv-ru-wordle-stats');
 	}
 
 	const stats = {
@@ -62,7 +62,7 @@ export const stats = createStats();
 
 stats.subscribe((value) => {
 	if (browser) {
-		localStorage.setItem('wordle-ru', JSON.stringify(value));
+		localStorage.setItem('sv-ru-wordle-stats', JSON.stringify(value));
 	}
 });
 

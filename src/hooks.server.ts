@@ -4,7 +4,7 @@ export const handle = (async ({ event, resolve }) => {
 	let theme: string | null = null;
 
 	const newTheme = event.url.searchParams.get('theme');
-	const cookieTheme = event.cookies.get('wordle-ru-theme');
+	const cookieTheme = event.cookies.get('sv-ru-wordle-theme');
 
 	if (newTheme) {
 		theme = newTheme;

@@ -14,9 +14,6 @@
 		} else if (e.detail === 'toggleRules') {
 			showRules = !showRules;
 			showStats = false;
-		} else if (e.detail === 'hideModals') {
-			showRules = false;
-			showStats = false;
 		}
 	}
 </script>
