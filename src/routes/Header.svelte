@@ -6,7 +6,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	let nextTheme = '';
+	let nextTheme = 'dark';
 
 	onMount(() => {
 		if (document.documentElement.dataset.theme) {
