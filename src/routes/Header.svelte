@@ -73,8 +73,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		flex-wrap: wrap;
-		padding: 0 1em;
+		padding: 0.5em 1em;
 		box-shadow: 0 2px var(--light);
 	}
 
@@ -83,9 +82,8 @@
 	}
 
 	svg {
-		width: 2em;
-		height: 2em;
-		display: block;
+		width: 1.5em;
+		height: 1.5em;
 	}
 
 	path {
@@ -94,6 +92,8 @@
 	}
 
 	ul {
+		margin: 0;
+		padding: 0;
 		display: flex;
 		align-items: center;
 		list-style: none;
@@ -108,7 +108,7 @@
 		border: none;
 		color: var(--color-text);
 		font-weight: 700;
-		font-size: 0.8rem;
+		font-size: 1rem;
 		transition: color 0.2s linear;
 		cursor: pointer;
 		padding: 0.5em;
@@ -117,6 +117,6 @@
 	}
 
 	button:hover {
-		box-shadow: 0px 3px var(--color-text);
+		box-shadow: inset 0px -3px var(--color-text);
 	}
 </style>
