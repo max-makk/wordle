@@ -294,7 +294,7 @@
 	.controls {
 		text-align: center;
 		justify-content: center;
-		height: 10em;
+		height: min(18vh, 10em);
 		width: 100%;
 	}
 
