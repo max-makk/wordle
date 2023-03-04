@@ -204,7 +204,7 @@
 	}
 
 	.grid {
-		--width: min(100vw, 40vh, 380px);
+		--width: clamp(300px, 40vh, 380px);
 		max-width: var(--width);
 		align-self: center;
 		justify-self: center;
@@ -293,7 +293,7 @@
 	.controls {
 		text-align: center;
 		justify-content: center;
-		height: min(18vh, 10rem);
+		height: 10em;
 		width: 100%;
 	}
 
@@ -315,7 +315,7 @@
 
 	.keyboard button,
 	.keyboard button:disabled {
-		--size: min(8vw, 4vh, 40px);
+		--size: 32px;
 		background-color: var(--light);
 		color: var(--black);
 		width: var(--size);
