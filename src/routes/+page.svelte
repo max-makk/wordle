@@ -204,7 +204,8 @@
 	}
 
 	.grid {
-		max-width: 300px;
+		--width: 300px;
+		max-width: var(--width);
 		align-self: center;
 		justify-self: center;
 		width: 100%;
